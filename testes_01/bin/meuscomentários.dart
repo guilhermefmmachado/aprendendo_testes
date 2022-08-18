@@ -1,41 +1,50 @@
 /*
-  * Agora AUTOMATIZAREMOS OS TESTES
+  O FRAMEWORK DE TESTES
 
-  para não acontecer a situação de ficar com vontade de alterar algo para
-  corrigir outra coisa e essa outra coisa quebra outras features feitas
-  anteriormente.
+  Talvez não será tão utilizado assim no momento, mas serve como referência caso
+  necessário.
+  
+  OS TRÊS ARTEFATOS DE TESTES:
+  - test(): esse que já usamos;
 
-  ! Precisamos armazenar os testes!
-  para que não aconteça de novo problemas que já foram resolvidos.
+  - group: ajuda a agrupar testes que atuam em uma unidade ou contexto comum;
+  * É possível debugar vários testes em sequência. Se usar breakpoints nos lugares
+  * certos, é possível ver também os dados mudando de teste em teste parando no
+  * mesmo ponto que o dado anterior parou.
+  ! Importante para ver aqueles casos onde uma situação funciona e outra situação
+  ! que deveria funcionar não funciona.
 
-  Para armazenar os testes, o dart já traz um pacote de testes, que pode ser
-  visto pelo pubspec.yaml em dependencies.
+  - suite: ajuda a agrupar grupos de testes, em questão de tamanho é quase
+    equivalente ao arquivo. Isso ajuda na manutenção.
 
-  ? Como usá-lo?
-  1. Criamos um diretório "test";
-  2. Tudo que ficar nesse diretório ficará automatizado, serão arquivos de teste.
-  3. Nomeie os arquivos sempre com "_test.dart" no final para o dart reconhecer
-     os arquivos como arquivos de teste.
-  4. Você vai escrever algo semelhante ao que foi escrito no teste manual
-  5. E também colocar uma função chamada test com descrição e unidade a ser testada
-  5.1 Pode-se usar dados globais, escritos fora do test, ou locais, 
-      escritos dentro do test
-  6. Internamente, a função test tem poucas funções auxiliares, mas a que você
-     mais vai usar é a "expect" com o valor legítimo, que retorna do seu código, e
-     o valor matcher, que você quer ou espera que saia.
-  6.1 Pelo dart ser fortemente tipado, isso não será muito comum, mas se for
-      necessário testar valores de tipos dinâmicos, use 
-      isA<tipo de dado>()
-  7. Talvez você reparou que ficou igualzinho aquele teste manual, então pode
-     Apagar aquele teste e ficar com esse do dart.
-  8. O VsCode inclusive vai te dar as opções de "Run" e "Debug" em cima do test
-     isso somente pra testar O TESTE, SÓ A PARTE DAQUELE CÓDIGO QUE ESTÁ ESCRITO
-     ALI. Run dá o resultado. Debug e breakpoints, etapa por etapa.
-  9. O diretório de testes deve REFLETIR completamente o diretório LIB.
-  10. No início, os testes parecem ser um impeditivo a mais no progresso, mas
-      no futuro, na manutenção, você será grato por eles e pelos resultados que
-      eles estipularam.
-  * Minha percepção: tá aparecendo informação demais na tela ao dar run no teste
-  * foque apenas no resultado que aparece no debug console que diz tudo o que é
-  * necessário
+  ! Existe o comando "dart test", que executa todos os testes de todos os arquivos.
+*/
+
+/*
+  CICLO DE VIDA
+  Os testes tem um ciclo de vida: começar, iniciar e morrer.
+
+  função setUp -> Algo semelhante a um initState. Ajuda a iniciar o teste.
+  É uma boa prática de teste iniciar as classes e funções nela.
+
+  função tearDown -> Destroi/mata o teste.
+
+  setUpAll -> Inicia a suite;
+  tearDownAll -> Fecha a suite;
+
+  É bom na limpeza de memória.
+*/
+
+/*
+  MATCHER expect(actual, matcher)
+  O matcher não é booleano, é possível atribuir funções para análisá-lo
+  isA<>, equals() -> Melhor que o usado até agora, isNotNull, contains() -> Quase
+  regex.
+  O matcher também pode guardar um allOf() que pode colocar todas essas funções
+  acima em um teste só.
+
+  ! Há outros recursos utilizados nesse capítulo, mas não os cobrirei aqui!
+
+  !!! Aqui tem comentários, mas não se comenta os testes de uma suite!!!
+  * Use skip ao invés disso, para deixar claro que há testes incompletos ainda.
 */
