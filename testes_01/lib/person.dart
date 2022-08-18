@@ -18,4 +18,8 @@ class Person {
     imcResult *= 100;
     return imcResult.roundToDouble() / 100;
   }
+
+  bool get isOlder {
+    return age >= 18;
+  }
 }

@@ -1,55 +1,41 @@
 /*
-  O que é uma unidade?
-  
-  -> Na programação funcional, a unidade é uma função.
-  Cada unidade, ou cada função, deve estar armazenada em um arquivo específico.
-  Isso ajuda na correlação entre unidades e testes de unidade.
-  É possível juntar, mas pode trazer dificuldades.
-  * Meu entendimento: então se eu tivesse, simplificando,
-  * um aplicativo de calculadora com funções para adição, subtração,
-  * multiplicação e divisão, cada uma dessas funções deveria estar em um arquivo
-  * próprio.
+  * Agora AUTOMATIZAREMOS OS TESTES
 
-  -> Na programação orientada a objetos, a unidade é a classe.
-  Cada classe também deve estar armazenada em um arquivo específico.
-*/
+  para não acontecer a situação de ficar com vontade de alterar algo para
+  corrigir outra coisa e essa outra coisa quebra outras features feitas
+  anteriormente.
 
-/*
-  O que se constitui um teste de unidade?
+  ! Precisamos armazenar os testes!
+  para que não aconteça de novo problemas que já foram resolvidos.
 
-  -> É testar algum comportamento dele.
-  -> É testar algo que o framework por si só não valida.
-  O teste é um comparativo de um valor que o desenvolvedor dão como certo,
-  esse valor deve atingir o resultado esperado.
+  Para armazenar os testes, o dart já traz um pacote de testes, que pode ser
+  visto pelo pubspec.yaml em dependencies.
 
-  * Testes são comparações.
-*/
-
-/*
-  * Meu entendimento: Cuidado com testes que são inúteis ou inválidos 
-  * porque isso pode levar à desvalorização dessa prática.
-  * Testes inúteis são aqueles que você está repetindo o trabalho que a linguagem,
-  * ou linter já fez ou é óbvia demais.
-
-  Exemplo:
-  final person = Person(name: "Guilherme", age: 18, height: 1.75, weight: 61);
-  print("A idade tem que ser 18: ${person.age == 18}");
-*/
-
-/*
-  O que realmente testamos são as regras de negócio do sistema.
-  Aqui exemplificaremos usando o IMC, índice de massa corporal, e sua regra de
-  negócio, que é a fórmula.
-  - Suponhamos também que queiramos apenas duas casas decimais do resultado.
-  
-  O teste ajuda no aprendizado das regras de negócio!
-
-  * Com os testes, fazemos pequenas refatorações 
-  * para se ajustar aos requisitos e regras.
-*/
-
-/*
-  ! Existe um porém! Tudo o que foi feito aqui são testes manuais.
-  * E o dart tem diversas ferramentas para testes, que será demonstrada em
-  * outra branch nesse meu contexto.
+  ? Como usá-lo?
+  1. Criamos um diretório "test";
+  2. Tudo que ficar nesse diretório ficará automatizado, serão arquivos de teste.
+  3. Nomeie os arquivos sempre com "_test.dart" no final para o dart reconhecer
+     os arquivos como arquivos de teste.
+  4. Você vai escrever algo semelhante ao que foi escrito no teste manual
+  5. E também colocar uma função chamada test com descrição e unidade a ser testada
+  5.1 Pode-se usar dados globais, escritos fora do test, ou locais, 
+      escritos dentro do test
+  6. Internamente, a função test tem poucas funções auxiliares, mas a que você
+     mais vai usar é a "expect" com o valor legítimo, que retorna do seu código, e
+     o valor matcher, que você quer ou espera que saia.
+  6.1 Pelo dart ser fortemente tipado, isso não será muito comum, mas se for
+      necessário testar valores de tipos dinâmicos, use 
+      isA<tipo de dado>()
+  7. Talvez você reparou que ficou igualzinho aquele teste manual, então pode
+     Apagar aquele teste e ficar com esse do dart.
+  8. O VsCode inclusive vai te dar as opções de "Run" e "Debug" em cima do test
+     isso somente pra testar O TESTE, SÓ A PARTE DAQUELE CÓDIGO QUE ESTÁ ESCRITO
+     ALI. Run dá o resultado. Debug e breakpoints, etapa por etapa.
+  9. O diretório de testes deve REFLETIR completamente o diretório LIB.
+  10. No início, os testes parecem ser um impeditivo a mais no progresso, mas
+      no futuro, na manutenção, você será grato por eles e pelos resultados que
+      eles estipularam.
+  * Minha percepção: tá aparecendo informação demais na tela ao dar run no teste
+  * foque apenas no resultado que aparece no debug console que diz tudo o que é
+  * necessário
 */
